@@ -6,27 +6,23 @@ var queries = require('../db/queries');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.render('admin');
+  console.log('hi',req.user);
+  res.render('admin/admin', {user: req.user});
 });
 
-router.get('/newadmin', function (req, res, next) {
-  res.render('newadmin')
+router.get('/newTournament', function (req, res, next) {
+  res.render('admin/newTournament')
 })
 
-router.post('/newadmin', function (req, res, next) {
+router.post('/newTournament', function (req, res, next) {
   console.log(req.body);
-    queries.getSingleUserByUsername(req.body.userSignupUsername).then(function(data){
-      if(data.length===0){
-        queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail,req.body.userPic)
-        .then(function(data){
-          res.redirect('/');
-        });
-      }
-      else{
-        res.render('signup',{errorMessage:"Username Already Taken Error # 4!"});
-      }
-    })
+  queries.addNewTournament(req.body.tournamentName, req.body.tournamentIsPrivate, queries.userId(req.user))
+  .then(function(data) {
+    res.render('admin/newTournament');
+  })
 })
+
+
 
 
 module.exports = router;

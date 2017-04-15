@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.text('password');
     table.text('email');
     table.text('image_url');
+    table.boolean('is_admin');
   })
 };
 

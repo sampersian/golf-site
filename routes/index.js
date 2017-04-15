@@ -5,7 +5,7 @@ var router = express.Router();
 var bcrypt = require('bcrypt');
 
 // DATABASE QUERIES
-var query = require('../db/queries');
+var queries = require('../db/queries');
 
 // MIDDLEWARE
 var passport = require('../passport');
@@ -24,5 +24,24 @@ router.use(bodyParser.json());
 router.get('/', function(req, res, next) {
   res.render('index', { title: "Golf Site"});
 });
+
+router.get('/newAdmin', function (req, res, next) {
+  res.render('newAdmin')
+})
+
+router.post('/newAdmin', function (req, res, next) {
+  console.log(req.body);
+    queries.getSingleUserByUsername(req.body.userSignupUsername).then(function(data){
+      if(data.length===0){
+        queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail,req.body.userPic)
+        .then(function(data){
+          res.redirect('/');
+        });
+      }
+      else{
+        res.render('newAdmin',{errorMessage:"Username Already Taken Error # 4!"});
+      }
+    })
+})
 
 module.exports = router;
