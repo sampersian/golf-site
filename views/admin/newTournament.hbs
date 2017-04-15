@@ -1,0 +1,39 @@
+<form class="form-horizontal" id="newTournamentForm" action="/admin/newTournament" method="POST">
+  <fieldset>
+    <legend>New Tournament</legend>
+
+    <div class="form-group">
+      <label for="inputEmail" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="tournamentName" name="tournamentName" placeholder="Name">
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Access</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input type="radio" name="tournamentIsPrivate" id="tournamentIsPrivateFalse" value="false" checked="">
+            Public (anyone can view)
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="tournamentIsPrivate" id="tournamentIsPrivateTrue" value="true">
+            Private (password to view)
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-primary">Cancel</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>

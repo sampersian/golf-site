@@ -9,7 +9,8 @@ exports.seed = function(knex, Promise) {
           username:'slam',
           password:'$2a$10$Cajr6KI5kIYtQBvs.Lj7r.Yod/mEQKgBtzmYdPEUWoWQswjUESkO.',
           email:'samuel.persian@gmail.com',
-          image_url:''
+          image_url:'',
+          is_admin: true
         })
     });
 };
