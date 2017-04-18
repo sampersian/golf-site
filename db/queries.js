@@ -30,7 +30,9 @@ function user(){
 }
 
 function userId(user) {
-  return knex('user').where('username', user).select('id');
+  let temp = knex('user').where('username', user).select('id');
+  console.log(temp);
+  return temp;
 }
 
 function addNewUser(first_name, last_name, username, password, email, url){
@@ -63,6 +65,7 @@ function tournament() {
 }
 
 function addNewTournament(name, isPrivate, adminId) {
+  console.log(adminId);
   if (!name || !isPrivate) return false;
 
   if (isPrivate === "false") isPrivate = false;
@@ -87,6 +90,12 @@ function addNewTournament(name, isPrivate, adminId) {
   })
 }
 
+function getAdminTournaments(adminUsername) {
+  console.log("trying to get tournaments (in queries.js) for", adminUsername);
+  console.log(userId(adminUsername));
+  return tournament().join('admin_tournament', 'tournament.id', '=', 'admin_tournament.tournament_id').where('admin_tournament.admin_id', userId(adminUsername));
+}
+
 
 
 module.exports = {
@@ -95,5 +104,6 @@ module.exports = {
   addNewUser,
   getSingleUserByUsername,
   tournament,
-  addNewTournament
+  addNewTournament,
+  getAdminTournaments
 }
