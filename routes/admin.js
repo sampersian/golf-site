@@ -14,10 +14,12 @@ router.get('/', function(req, res, next) {
   })
 });
 
+// GET NEW TOURNAMENT
 router.get('/newTournament', function (req, res, next) {
   res.render('admin/newTournament')
 })
 
+// POST NEW tournament
 router.post('/newTournament', function (req, res, next) {
   console.log(req.body);
   queries.addNewTournament(req.body.tournamentName, req.body.tournamentIsPrivate, queries.userId(req.user))
@@ -25,6 +27,32 @@ router.post('/newTournament', function (req, res, next) {
     res.render('admin/newTournament');
   })
 })
+
+
+// GET NEW event
+
+router.get('/newTournament', function (req, res, next) {
+  res.render('admin/newTournament')
+})
+
+// POST NEW event
+
+// GET NEW player
+
+// POST NEW PLAYER
+
+// GET NEW team
+
+// POST NEW team
+
+// GET NEW result
+
+// POST NEW result
+
+// GET NEW SPECAIAL awards
+
+// POST NEW SPECIAL awards
+
 
 
 
