@@ -24,7 +24,7 @@ router.post('/newTournament', function (req, res, next) {
   console.log(req.body);
   queries.addNewTournament(req.body.tournamentName, req.body.tournamentIsPrivate, queries.userId(req.user))
   .then(function(data) {
-    res.render('admin/newTournament');
+    res.render('admin');
   })
 })
 
@@ -32,8 +32,12 @@ router.post('/newTournament', function (req, res, next) {
 
 router.get('/tournament/:tournament_id', function (req, res, next) {
   console.log("viewing tournament",req.params.tournament_id);
-  res.render('admin/tournament', {
-    tournament_id: req.params.tournament_id
+  queries.getOneTournament(req.params.tournament_id)
+  .then(function(data) {
+    console.log("this is what i got ", data)
+    res.render('admin/tournament', {
+      tournament: data[0]
+    })
   })
 })
 

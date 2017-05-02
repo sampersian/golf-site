@@ -99,6 +99,10 @@ function getAdminTournaments(adminUsername) {
   .select('admin_tournament.tournament_id', 'admin_tournament.admin_id', 'tournament.name as tournament_name', 'tournament.isPrivate');
 }
 
+function getOneTournament(id) {
+  console.log("in queries.js getting tournament",id);
+  return knex('tournament').where('id', id)
+}
 
 
 module.exports = {
@@ -108,5 +112,6 @@ module.exports = {
   getSingleUserByUsername,
   tournament,
   addNewTournament,
-  getAdminTournaments
+  getAdminTournaments,
+  getOneTournament
 }
