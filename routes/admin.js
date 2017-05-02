@@ -28,28 +28,58 @@ router.post('/newTournament', function (req, res, next) {
   })
 })
 
+// GET view tournament
+
+router.get('/tournament/:tournament_id', function (req, res, next) {
+  console.log("viewing tournament",req.params.tournament_id);
+  res.render('admin/tournament', {
+    tournament_id: req.params.tournament_id
+  })
+})
 
 // GET NEW event
 
-router.get('/newTournament', function (req, res, next) {
-  res.render('admin/newTournament')
+router.get('/newEvent', function (req, res, next) {
+  res.render('admin/newEvent')
 })
 
 // POST NEW event
 
+// GET view event
+
+router.get('/event', function (req, res, next) {
+  res.render('admin/event')
+})
+
 // GET NEW player
+
+router.get('/newPlayer', function (req, res, next) {
+  res.render('admin/newPlayer')
+})
 
 // POST NEW PLAYER
 
 // GET NEW team
 
+router.get('/newTeam', function (req, res, next) {
+  res.render('admin/newTeam')
+})
+
 // POST NEW team
 
 // GET NEW result
 
+router.get('/newResult', function (req, res, next) {
+  res.render('admin/newResult')
+})
+
 // POST NEW result
 
 // GET NEW SPECAIAL awards
+
+router.get('/newSpecialAward', function (req, res, next) {
+  res.render('admin/newSpecialAward')
+})
 
 // POST NEW SPECIAL awards
 
