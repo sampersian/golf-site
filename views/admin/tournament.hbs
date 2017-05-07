@@ -1,1 +1,7 @@
 <h1>{{tournament.name}} Home Page</h1>
+
+<a href="/admin/tournament/{{tournament.id}}/newEvent">New Event</a>
+
+{{#each tournament_events}}
+<h3>{{this.year}}</h3>
+{{/each}}

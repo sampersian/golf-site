@@ -43,11 +43,19 @@ router.get('/tournament/:tournament_id', function (req, res, next) {
 
 // GET NEW event
 
-router.get('/newEvent', function (req, res, next) {
-  res.render('admin/newEvent')
+router.get('/tournament/:tournament_id/newEvent', function (req, res, next) {
+  res.render('admin/newEvent', {
+    tournament_id: req.params.tournament_id
+  })
 })
 
 // POST NEW event
+
+router.post('/tournament/:tournament_id/newEvent', function (req, res, next) {
+  console.log(req.body);
+  queries.addNewEvent(req.params.tournament_id, req.body.eventYear);
+})
+
 
 // GET view event
 

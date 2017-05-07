@@ -104,6 +104,10 @@ function getOneTournament(id) {
   return knex('tournament').where('id', id)
 }
 
+function addNewEvent(tournament_id, year) {
+  console.log("adding an event for tournament_id ",tournament_id,"with the year",year);
+}
+
 
 module.exports = {
   user,
@@ -113,5 +117,6 @@ module.exports = {
   tournament,
   addNewTournament,
   getAdminTournaments,
-  getOneTournament
+  getOneTournament,
+  addNewEvent
 }
