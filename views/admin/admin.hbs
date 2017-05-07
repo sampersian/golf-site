@@ -1,7 +1,7 @@
 <h1>Admin Page {{ user }}</h1>
 <a href="admin/newTournament">New Tournament</a>
 {{#each user_tournaments}}
-<h3 class="tournamentName">{{this.name}}</h3>
+<a href="admin/tournament/{{this.tournament_id}}"><h3 class="tournamentName">{{this.tournament_name}}</h3></a>
 {{#if this.isPrivate}}
   <p>Private</p>
 {{else}}

@@ -93,9 +93,20 @@ function addNewTournament(name, isPrivate, adminId) {
 function getAdminTournaments(adminUsername) {
   console.log("trying to get tournaments (in queries.js) for", adminUsername);
   console.log(userId(adminUsername));
-  return tournament().join('admin_tournament', 'tournament.id', '=', 'admin_tournament.tournament_id').where('admin_tournament.admin_id', userId(adminUsername));
+  //join where tournament's id = admin_tournament's tournament id, then refines to the only the user's tournaments
+  return tournament().join('admin_tournament', 'tournament.id', '=', 'admin_tournament.tournament_id')
+  .where('admin_tournament.admin_id', userId(adminUsername))
+  .select('admin_tournament.tournament_id', 'admin_tournament.admin_id', 'tournament.name as tournament_name', 'tournament.isPrivate');
 }
 
+function getOneTournament(id) {
+  console.log("in queries.js getting tournament",id);
+  return knex('tournament').where('id', id)
+}
+
+function addNewEvent(tournament_id, year) {
+  console.log("adding an event for tournament_id ",tournament_id,"with the year",year);
+}
 
 
 module.exports = {
@@ -105,5 +116,7 @@ module.exports = {
   getSingleUserByUsername,
   tournament,
   addNewTournament,
-  getAdminTournaments
+  getAdminTournaments,
+  getOneTournament,
+  addNewEvent
 }
