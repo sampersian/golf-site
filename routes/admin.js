@@ -53,7 +53,10 @@ router.get('/tournament/:tournament_id/newEvent', function (req, res, next) {
 
 router.post('/tournament/:tournament_id/newEvent', function (req, res, next) {
   console.log(req.body);
-  queries.addNewEvent(req.params.tournament_id, req.body.eventYear);
+  queries.addNewEvent(req.params.tournament_id, req.body.eventYear)
+  .then((response) => {
+    res.json({message: response})
+  });
 })
 
 
