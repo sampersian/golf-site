@@ -106,6 +106,9 @@ function getOneTournament(id) {
 
 function addNewEvent(tournament_id, year) {
   console.log("adding an event for tournament_id ",tournament_id,"with the year",year);
+  return new Promise((resolve, reject) => {
+    resolve("addNewEvent function currently under construction")
+  });
 }
 
 
